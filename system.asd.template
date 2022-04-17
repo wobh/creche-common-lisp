@@ -1,0 +1,9 @@
+;; -*- mode: lisp -*-
+
+(asdf:defsystem :{{system_name}}
+  :description ""
+  :version "0.0.1"
+  :author "{{author_name}} <{{author_email}}>"
+  :components ((:file "{{package_basename}}")
+	       (:file "{{package_test_basename}}")
+	       (:file "{{package_user_basename}}")))

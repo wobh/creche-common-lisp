@@ -1,0 +1,48 @@
+#+title: Common Lisp Creche README
+#+date: <2022-04-16 Sat>
+#+author: William Clifford
+#+email: will@wobh.org
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+
+* Introduction
+
+Create new Common Lisp projects in a consistent way.
+
+(TBH, this is really an exercise in Makefile techniques and some
+*nix shell basics.)
+
+* Purpose
+
+This is here shared with the idea that some might find it useful for
+personal experiments and toys--that's all I'm using it for. It might
+also be cautionarily if not pedagogically useful. All that said, it
+should not be expected to have any desireable characteristics or be
+useful in any way.
+
+Non-personal use (for example, commercial) is forbidden.
+
+Non-casual personal use is strongly discouraged.
+
+* Instructions
+
+Basic use:
+
+1. Clone repository
+2. Edit ~Makefile~ to update constants:
+   - ~niamod_name~ a reverse domain name, the basis of canonical package and system name
+   - ~author_name~
+   - ~author_email~
+   - ~source_home~ if ~${HOME}/src~ is not where you keep your code projects
+   - ~system_path~ if ~${XDG_DATA_HOME}/common-lisp/source~ is not where you install CL code
+3. Run ~make all abbrev_name=wat system_type=tools~ to create new project in creche folder
+4. Run ~make install abbrev_name=wat system_type=tools~ to install new project in ~source_home~
+5. Run ~make clean abbrev_name=wat system_type=tools~ to clean up old
+
+* COMMENT org settings
+#+options: ':nil *:t -:t ::t <:t H:6 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:nil todo:t |:t

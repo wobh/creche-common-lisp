@@ -1,0 +1,9 @@
+;; -*- mode: lisp -*-
+
+(defpackage #:{{package_name}}
+  (:use #:common-lisp)
+  (:local-nicknames (#:{{abbrev_name}} #:{{system_name}}))
+  (:documentation "{{package_symbol}}
+"))
+
+(in-package #:{{package_name}})
