@@ -122,6 +122,7 @@ package-test : builddir
 package-user : builddir
 	sed \
 		-e "s/{{package_name}}/$(system_name)-user/" \
+		-e "s/{{package_nickname}}/${abbrev_name}-user/" \
 		-e "s/{{package_symbol}}/$(symbol_name)-USER/" \
 		-e "s/{{abbrev_name}}/$(abbrev_name)/" \
 		-e "s/{{system_name}}/$(system_name)/" \
