@@ -1,6 +1,6 @@
 ;; -*- mode: lisp -*-
 
-(asdf:defsystem :{{system_name}}
+(defsystem "{{system_name}}"
   :description ""
   :version "0.0.1"
   :author "{{author_name}} <{{author_email}}>"

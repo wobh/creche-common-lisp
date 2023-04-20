@@ -28,7 +28,7 @@ To use:
 2. Run =make install= this will install it into
    ~{{system_path}}/{{system_name}}~
 3. in REPL =(require "asdf")= (as needed)
-4. =(require "{{system_name}}")=
+4. =(asdf:load-system "{{system_name}}")=
 
 The package defines a nickname of ~{{abbrev_name}}~ for convenience.
 
