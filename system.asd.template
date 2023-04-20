@@ -6,5 +6,4 @@
   :author "{{author_name}} <{{author_email}}>"
   :license "Copyright © {{copyright_year}} {{author_name}} All rights reserved."
   :components ((:file "{{package_basename}}")
-	       (:file "{{package_test_basename}}")
 	       (:file "{{package_user_basename}}")))
