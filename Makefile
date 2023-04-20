@@ -56,6 +56,7 @@ system_files := $(system_name).asd \
 	$(package_test_basename).lisp \
 	$(package_user_basename).lisp
 
+copyright_year := $(shell date -jn "+%Y")
 setup_date := $(shell date -jn "+%F")
 setup_weekday := $(shell date -jn "+%a")
 
@@ -99,6 +100,7 @@ system : builddir
 		-e "s/{{system_name}}/$(system_name)/" \
 		-e "s/{{author_name}}/$(author_name)/" \
 		-e "s/{{author_email}}/$(author_email)/" \
+                -e "s/{{copyright_year}}/$(copyright_year)/" \
 		system.asd.template \
 		> $(builddir)/$(system_name).asd
 
