@@ -25,10 +25,10 @@ Non-casual personal use is strongly discouraged.
 To use:
 
 1. Clone repository
-2. Run ~make install~ this will install it into
+2. Run =make install= this will install it into
    ~{{system_path}}/{{system_name}}~
-3. in REPL ~(require "asdf")~ (as needed)
-4. ~(require :{{system_name}})~
+3. in REPL =(require "asdf")= (as needed)
+4. =(require "{{system_name}}")=
 
 The test package is simply Lisp assertions and loads with the rest of
 the system. If the system loads without errors all the tests passed.
