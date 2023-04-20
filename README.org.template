@@ -30,10 +30,10 @@ To use:
 3. in REPL =(require "asdf")= (as needed)
 4. =(require "{{system_name}}")=
 
+The package defines a nickname of ~{{abbrev_name}}~ for convenience.
+
 The test package is simply Lisp assertions and loads with the rest of
 the system. If the system loads without errors all the tests passed.
-
-The package defines a nickname of ~{{abbrev_name}}~ for convenience.
 
 * COMMENT org settings
 #+options: ':nil *:t -:t ::t <:t H:6 \n:nil ^:t arch:headline
