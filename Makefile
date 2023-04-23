@@ -94,30 +94,28 @@ makefile : builddir
 
 system : builddir
 	sed \
-		-e "s/{{package_basename}}/$(abbrev_name)/" \
-		-e "s/{{package_test_basename}}/$(abbrev_name)-test/" \
-		-e "s/{{package_user_basename}}/$(abbrev_name)-user/" \
 		-e "s/{{system_name}}/$(system_name)/" \
 		-e "s/{{author_name}}/$(author_name)/" \
 		-e "s/{{author_email}}/$(author_email)/" \
-                -e "s/{{copyright_year}}/$(copyright_year)/" \
+		-e "s/{{copyright_year}}/$(copyright_year)/" \
+		-e "s/{{package_test_basename}}/$(abbrev_name)-test/" \
+		-e "s/{{package_user_basename}}/$(abbrev_name)-user/" \
 		system.asd.template \
 		> $(builddir)/$(system_name).asd
 
 package : builddir
 	sed \
 		-e "s/{{package_name}}/$(system_name)/" \
+		-e "s/{{package_nickname}}/$(abbrev_name)/" \
 		-e "s/{{package_symbol}}/$(symbol_name)/" \
-		-e "s/{{abbrev_name}}/$(abbrev_name)/" \
 		package.lisp.template \
 		> $(builddir)/$(abbrev_name).lisp
 
 package-test : builddir
 	sed \
 		-e "s/{{package_name}}/$(system_name)-test/" \
+		-e "s/{{package_nickname}}/$(abbrev_name)-test/" \
 		-e "s/{{package_symbol}}/$(symbol_name)-TEST/" \
-		-e "s/{{abbrev_name}}/$(abbrev_name)/" \
-		-e "s/{{system_name}}/$(system_name)/" \
 		package-test.lisp.template \
 		> $(builddir)/$(abbrev_name)-test.lisp
 
@@ -125,9 +123,8 @@ package-user : builddir
 	sed \
 		-e "s/{{package_name}}/$(system_name)-user/" \
 		-e "s/{{package_nickname}}/${abbrev_name}-user/" \
+		-e "s/{{import_from_name}}/$(abbrev_name)/" \
 		-e "s/{{package_symbol}}/$(symbol_name)-USER/" \
-		-e "s/{{abbrev_name}}/$(abbrev_name)/" \
-		-e "s/{{system_name}}/$(system_name)/" \
 		package-user.lisp.template \
 		> $(builddir)/$(abbrev_name)-user.lisp
 

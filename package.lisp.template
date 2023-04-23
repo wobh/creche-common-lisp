@@ -1,7 +1,7 @@
 ;; -*- mode: lisp -*-
 
 (defpackage #:{{package_name}}
-  (:nicknames #:{{abbrev_name}})
+  (:nicknames #:{{package_nickname}})
   (:use #:common-lisp)
   (:documentation "{{package_symbol}}
 "))

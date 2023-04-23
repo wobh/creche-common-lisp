@@ -5,5 +5,14 @@
   :version "0.0.1"
   :author "{{author_name}} <{{author_email}}>"
   :license "Copyright © {{copyright_year}} {{author_name}} All rights reserved."
+  :in-order-to ((test-op (test-op "{{system_name}}/test")))
   :components ((:file "{{package_basename}}")
-	       (:file "{{package_user_basename}}")))
+	       (:file "{{package_user_basename}}"
+                      :depends-on ("{{package_basename}}"))))
+
+(defsystem "{{system_name}}/test"
+  :description ""
+  :depends-on ("{{system_name}}")
+  :perform (test-op (o c) (symbol-call "{{package_test_basename}}"
+                                       :test-all))
+  :components ((:file "{{package_test_basename}}")))

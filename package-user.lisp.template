@@ -3,8 +3,7 @@
 (defpackage #:{{package_name}}
   (:nicknames #:{{package_nickname}})
   (:use #:common-lisp)
-  (:local-nicknames (#:{{abbrev_name}} #:{{system_name}}))
-  (:import-from #:{{abbrev_name}})
+  (:import-from #:{{import_from_name}})
   (:documentation "{{package_symbol}}
 "))
 
