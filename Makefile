@@ -45,16 +45,33 @@ endif
 abbrev_name := ${abbrev_name}
 system_type := ${system_type}
 system_name := $(shell echo $(niamod_name) $(system_type) $(abbrev_name) | tr " " ".")
-symbol_name := $(shell echo $(system_name) | tr "[:lower:]" "[:upper:]")
+
 
 # TODO: see about a way to make package-user optional
-package_basename := $(abbrev_name)
+system_filename := ${system_name}.asd
+
+package_main_basename := ${abbrev_name}
+package_main_filename := ${package_main_basename}.lisp
+package_main_fullname := ${system_name}
+package_main_nickname := ${abbrev_name}
+package_main_symbol := $(shell echo $(package_main_fullname) | tr "[:lower:]" "[:upper:]")
+
 package_test_basename := $(abbrev_name)-test
+package_test_filename := $(package_test_basename)-test.lisp
+package_test_fullname := $(system_name)-test
+package_test_nickname := $(abbrev_name)-test
+package_test_symbol := $(shell echo $(package_test_fullname) | tr "[:lower:]" "[:upper:]")
+
 package_user_basename := $(abbrev_name)-user
-system_files := $(system_name).asd \
-	$(package_basename).lisp \
-	$(package_test_basename).lisp \
-	$(package_user_basename).lisp
+package_user_filename := $(package_user_basename)-user.lisp
+package_user_fullname := $(system_name)-user
+package_user_nickname := $(abbrev_name)-user
+package_user_symbol := $(shell echo $(package_user_fullname) | tr "[:lower:]" "[:upper:]")
+
+system_files := $(system_filename) \
+	$(package_main_filename) \
+	$(package_test_filename) \
+	$(package_user_filename)
 
 copyright_year := $(shell date -jn "+%Y")
 setup_date := $(shell date -jn "+%F")
@@ -94,41 +111,43 @@ makefile : builddir
 
 system : builddir
 	sed \
+		-e "s/{{package_main_basename}}/$(package_main_basename)/" \
+		-e "s/{{package_user_basename}}/$(package_user_basename)/" \
+		-e "s/{{package_test_basename}}/$(package_test_basename)/" \
+		-e "s/{{package_test_fullname}}/$(package_test_fullname)/" \
 		-e "s/{{system_name}}/$(system_name)/" \
 		-e "s/{{author_name}}/$(author_name)/" \
 		-e "s/{{author_email}}/$(author_email)/" \
 		-e "s/{{copyright_year}}/$(copyright_year)/" \
-		-e "s/{{package_test_basename}}/$(abbrev_name)-test/" \
-		-e "s/{{package_user_basename}}/$(abbrev_name)-user/" \
 		system.asd.template \
-		> $(builddir)/$(system_name).asd
+		> $(builddir)/$(system_filename)
 
-package : builddir
+package-main : builddir
 	sed \
-		-e "s/{{package_name}}/$(system_name)/" \
-		-e "s/{{package_nickname}}/$(abbrev_name)/" \
-		-e "s/{{package_symbol}}/$(symbol_name)/" \
-		package.lisp.template \
-		> $(builddir)/$(abbrev_name).lisp
+		-e "s/{{package_main_fullname}}/$(package_main_fullname)/" \
+		-e "s/{{package_main_nickname}}/$(package_main_nickname)/" \
+		-e "s/{{package_main_symbol}}/$(package_main_symbol)/" \
+		package-main.lisp.template \
+		> $(builddir)/$(package_main_filename)
 
 package-test : builddir
 	sed \
-		-e "s/{{package_name}}/$(system_name)-test/" \
-		-e "s/{{package_nickname}}/$(abbrev_name)-test/" \
-		-e "s/{{package_symbol}}/$(symbol_name)-TEST/" \
+		-e "s/{{package_test_fullname}}/$(package_test_fullname)/" \
+		-e "s/{{package_test_nickname}}/$(package_test_nickname)/" \
+		-e "s/{{package_test_symbol}}/$(package_test_symbol)/" \
 		package-test.lisp.template \
-		> $(builddir)/$(abbrev_name)-test.lisp
+		> $(builddir)/$(package_test_filename)
 
 package-user : builddir
 	sed \
-		-e "s/{{package_name}}/$(system_name)-user/" \
-		-e "s/{{package_nickname}}/${abbrev_name}-user/" \
-		-e "s/{{import_from_name}}/$(abbrev_name)/" \
-		-e "s/{{package_symbol}}/$(symbol_name)-USER/" \
+		-e "s/{{package_user_fullname}}/$(package_user_fullname)/" \
+		-e "s/{{package_user_nickname}}/$(package_user_nickname)/" \
+		-e "s/{{package_main_nickname}}/$(package_main_nickname)/" \
+		-e "s/{{package_user_symbol}}/$(package_user_symbol)/" \
 		package-user.lisp.template \
-		> $(builddir)/$(abbrev_name)-user.lisp
+		> $(builddir)/$(package_user_filename)
 
-all : readme makefile system package package-test package-user
+all : readme makefile system package-main package-test package-user
 
 installdirs :
 	mkdir -p $(installdir)

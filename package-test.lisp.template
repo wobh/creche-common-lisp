@@ -1,13 +1,13 @@
 ;; -*- mode: lisp -*-
 
-(defpackage #:{{package_name}}
-  (:nicknames #:{{package_nickname}})
+(defpackage #:{{package_test_fullname}}
+  (:nicknames #:{{package_test_nickname}})
   (:use #:common-lisp)
   (:export #:test-all)
-  (:documentation "{{package_symbol}}
+  (:documentation "{{package_test_symbol}}
 "))
 
-(in-package #:{{package_name}})
+(in-package #:{{package_test_fullname}})
 
 (defun test-all ()
   (loop
