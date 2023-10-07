@@ -57,13 +57,13 @@ package_main_nickname := ${abbrev_name}
 package_main_symbol := $(shell echo $(package_main_fullname) | tr "[:lower:]" "[:upper:]")
 
 package_test_basename := $(abbrev_name)-test
-package_test_filename := $(package_test_basename)-test.lisp
+package_test_filename := $(package_test_basename).lisp
 package_test_fullname := $(system_name)-test
 package_test_nickname := $(abbrev_name)-test
 package_test_symbol := $(shell echo $(package_test_fullname) | tr "[:lower:]" "[:upper:]")
 
 package_user_basename := $(abbrev_name)-user
-package_user_filename := $(package_user_basename)-user.lisp
+package_user_filename := $(package_user_basename).lisp
 package_user_fullname := $(system_name)-user
 package_user_nickname := $(abbrev_name)-user
 package_user_symbol := $(shell echo $(package_user_fullname) | tr "[:lower:]" "[:upper:]")
