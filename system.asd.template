@@ -13,6 +13,6 @@
 (defsystem "{{system_name}}/test"
   :description ""
   :depends-on ("{{system_name}}")
-  :perform (test-op (o c) (symbol-call "{{package_test_fullname}}"
+  :perform (test-op (o c) (symbol-call '{{package_test_fullname}}
                                        :test-all))
   :components ((:file "{{package_test_basename}}")))
