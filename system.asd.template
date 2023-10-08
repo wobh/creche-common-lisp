@@ -7,7 +7,7 @@
   :license "Copyright © {{copyright_year}} {{author_name}} All rights reserved."
   :in-order-to ((test-op (test-op "{{system_name}}/test")))
   :components ((:file "{{package_main_basename}}")
-	       (:file "{{package_user_basename}}"
+               (:file "{{package_user_basename}}"
                       :depends-on ("{{package_main_basename}}"))))
 
 (defsystem "{{system_name}}/test"
