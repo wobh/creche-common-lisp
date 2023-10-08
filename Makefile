@@ -91,6 +91,9 @@ builddir :
 
 readme : builddir
 	sed \
+		-e "s/{{package_main_basename}}/$(package_main_basename)/" \
+		-e "s/{{package_user_basename}}/$(package_user_basename)/" \
+		-e "s/{{package_test_basename}}/$(package_test_basename)/" \
 		-e "s/{{abbrev_name}}/$(abbrev_name)/" \
 		-e "s/{{system_name}}/$(system_name)/" \
 		-e "s/{{system_path}}/$(system_path)/" \

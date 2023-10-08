@@ -5,6 +5,7 @@
 #+language: en
 #+select_tags: export
 #+exclude_tags: noexport
+#+startup: overview
 
 * TODO Introduction
 
@@ -13,12 +14,16 @@
 This is here shared with the idea that some might find it useful for
 personal experiments and toys--that's all I'm using it for. It might
 also be cautionarily if not pedagogically useful. All that said, it
-should not be expected to have any desireable characteristics or be
+should not be expected to have any desirable characteristics or be
 useful in any way.
 
-Non-personal use (for example, commercial) is forbidden.
+Use by non-natural persons is forbidden.
 
-Non-casual personal use is strongly discouraged.
+Use by natural persons acting as agents on behalf of non-natural
+persons is also forbidden.
+
+Use by natural persons for non-casual purposes is strongly
+discouraged.
 
 * Instructions
 
@@ -32,8 +37,20 @@ To use:
 
 The package defines a nickname of ~{{abbrev_name}}~ for convenience.
 
-The test package is simply Lisp assertions and loads with the rest of
-the system. If the system loads without errors all the tests passed.
+* TODO Features
+** TODO ~{{package_main_basename}}~
+** ~{{package_user_basename}}~
+
+This is the interactive package which inherits all the symbols in the
+~{{package_main_basename}}~ system. Use for tests, experiments, or play.
+
+Enter environment with =(in-package #:{{package_user_basename}})=
+
+** ~{{package_test_basename}}~
+
+To run tests: =(asdf:test-system "{{system_name}}")=
+
+* TODO References
 
 * COMMENT org settings
 #+options: ':nil *:t -:t ::t <:t H:6 \n:nil ^:t arch:headline
